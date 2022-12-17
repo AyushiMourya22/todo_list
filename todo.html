@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO LIST</title>
+    <style>
+        body{
+            margin: 0px;
+            height: 713px;
+        }
+        #gr{
+            height: 713px;
+            display: flex;
+        }
+        #item1{
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            font-size: 50px;
+            grid-auto-columns:707px;
+            
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+            background-image: url(https://www.design.svgbackgrounds.com/wp-content/uploads/2021/05/rose-petals-gradient-overlapping-circle-background.jpg);
+        }
+        #item1 p{
+            position: relative;
+            top:40%;
+        }
+        #item2{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        #box{
+            width: 500px;
+            
+            background-color: #f1b6cc;
+            background-color: #ffcfe8;
+            /* height:400px; */
+
+        }
+        #inp{
+            border: none;
+            background-color: #cf105c;
+            margin: 0px;
+            text-align: center;
+            height: 40px;
+
+
+        }
+        #input{
+            border: none;
+        }
+        #inp input{
+            position: relative;
+            top: 20%;
+            width: 300px;
+            margin: 0px;
+            height: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        #submit{
+            position: relative;
+            top: 19%;
+            height: 22px;
+            color: white;
+            background-color: #dc86a6;
+            background-color: #701b36;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            width: 100px;
+        }
+        ul{
+            padding:0px;
+            list-style: none;
+        }
+        li{
+            padding-left: 5px;
+            padding-right: 5px;
+            border: none;
+            border-radius: 3px;
+            /* height: 20px; */
+            overflow-wrap: break-word;
+            width: 350px;
+        }
+        .delete{
+            /* align-items: center; */
+            width: 30px;
+            padding-left: 0px;
+            /* padding-right: 5px; */
+            height: 30px;
+            /* background-color: #701b36; */
+            border: none;
+            /* border-radius: 5px;
+            color: white; */
+        }
+        .d{
+            display: flex;
+            justify-content: space-around;
+            width: 500px;
+
+        }
+        .di{
+            /* width: 350px; */
+            background-color: white;
+            margin-bottom:8px ;
+            /* margin-left: 5px; */
+            border: none;
+            border-radius: 5px;
+            padding-top: 3px;
+            padding-bottom: 3px;
+        }
+        button img{
+            width: 30px;
+            height: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div id="gr">
+        <div id="item1">
+            <p>TO-DO LIST</p>
+
+        </div>
+        <div id="item2">
+            <div id="box">
+
+                <div id="inp">
+                    <input type="text" name="input" id="input" placeholder="ADD TASK">
+                    <button id="submit" >DONE</button>
+                    
+                </div>
+                
+                <ul id="ulel">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        let input=document.getElementById("input")
+        let array=[]
+        submit.addEventListener("click",function(){
+            array.push(input.value)
+            let s=JSON.stringify(array)
+            localStorage.setItem("array",s)
+            renderlist()
+            input.value=""
+console.log(array)
+        })
+        let ulli=document.getElementById("ulel")
+        let list=[]
+        function renderlist(){
+            list=[]
+        for(let i=0;i<array.length;i++){
+            list+=`
+            <div class="d" id="ite${i}">
+            <div class="di" id="it${i}"><li list-style:"none"> ${array[i]}
+
+            </div>    
+            <div class="b">    
+                <button class="delete" id="delete${i}" onclick="remove(${i})"><img src="bu.png"></button>
+                
+                </div>    
+                </li>
+                </div>
+            `
+            console.log(list)
+
+
+        }
+        ulli.innerHTML=list
+    }
+    function remove(num){
+        array.splice(num,1)
+        
+        renderlist()
+
+    }
+
+    
+
+    </script>
+</body>
+</html>
